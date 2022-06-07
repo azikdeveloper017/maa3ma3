@@ -21,17 +21,17 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...💤"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⛔️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
-    STATUS_CHECKING = "CheckingUp...📝"
-    STATUS_SEEDING = "Seeding...🌧"
+    STATUS_UPLOADING = "Yuklanmoqda...📤"
+    STATUS_DOWNLOADING = "Yuklab olinmoqda...📥"
+    STATUS_CLONING = "Klonlanmoqda...♻️"
+    STATUS_WAITING = "Navbatda...💤"
+    STATUS_FAILED = "Xatolik 🚫"
+    STATUS_PAUSE = "Pauza...⛔️"
+    STATUS_ARCHIVING = "Arxivlanmoqda...🔐"
+    STATUS_EXTRACTING = "Arxivdan ochilmoqda...📂"
+    STATUS_SPLITTING = "Bo'laklanmoqda...✂️"
+    STATUS_CHECKING = "tekshirilmoqda...📝"
+    STATUS_SEEDING = "Yaxshlanmoqda...🌧"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
