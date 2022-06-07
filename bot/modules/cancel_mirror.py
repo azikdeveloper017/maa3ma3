@@ -59,7 +59,7 @@ def cancel_all(status):
 def cancell_all_buttons(update, context):
     buttons = button_build.ButtonMaker()
     buttons.sbutton("Yuklab olishlarni", "canall down")
-    buttons.sbutton("Yuklash;arni", "canall up")
+    buttons.sbutton("Yuklashlarni", "canall up")
     if QB_SEED:
         buttons.sbutton("Yaxshilashlarni", "canall seed")
     buttons.sbutton("Klonlashlarni", "canall clone")
