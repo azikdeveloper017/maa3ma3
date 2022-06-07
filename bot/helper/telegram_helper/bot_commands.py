@@ -34,7 +34,7 @@ class _BotCommands:
         self.ExecHelpCommand = f'exechelp{CMD_INDEX}'
         self.LeechSetCommand = f'leechset{CMD_INDEX}'
         self.SetThumbCommand = f'setthumb{CMD_INDEX}'
-        self.LeechCommand = f'leech{CMD_INDEX}'
+        self.LeechCommand = f'tggayuklash{CMD_INDEX}'
         self.UnzipLeechCommand = f'unzipleech{CMD_INDEX}'
         self.ZipLeechCommand = f'zipleech{CMD_INDEX}'
         self.QbLeechCommand = f'qbleech{CMD_INDEX}'
