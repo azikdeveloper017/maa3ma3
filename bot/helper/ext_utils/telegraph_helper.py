@@ -61,21 +61,21 @@ class TelegraphHelper:
         num_of_path = len(path)
         for content in telegraph_content :
             if nxt_page == 1 :
-                content += f'<b><a href="https://telegra.ph/{path[nxt_page]}">Next</a></b>'
+                content += f'<b><a href="https://telegra.ph/{path[nxt_page]}">Keyingi</a></b>'
                 nxt_page += 1
             else :
                 if prev_page <= num_of_path:
-                    content += f'<b><a href="https://telegra.ph/{path[prev_page]}">Prev</a></b>'
+                    content += f'<b><a href="https://telegra.ph/{path[prev_page]}">Oldingi</a></b>'
                     prev_page += 1
                 if nxt_page < num_of_path:
-                    content += f'<b> | <a href="https://telegra.ph/{path[nxt_page]}">Next</a></b>'
+                    content += f'<b> | <a href="https://telegra.ph/{path[nxt_page]}">Keyingi</a></b>'
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Mirror-leech-bot Torrent Search',
+                title = 'AziK Mirror BoT Torrent Search',
                 content=content
             )
         return
 
 
-telegraph=TelegraphHelper('Mirror-Leech-Telegram-Bot', 'https://github.com/anasty17/mirror-leech-telegram-bot')
+telegraph=TelegraphHelper('AziK Mirror BoT', 'https://t.me/azik_mirror')
