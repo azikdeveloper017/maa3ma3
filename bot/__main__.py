@@ -44,7 +44,7 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
+    stats = f'<b>Ishga tushgan sana:</b> {last_commit}\n\n'\
             f'<b>Bot Uptime:</b> {currentTime}\n'\
             f'<b>OS Uptime:</b> {osUptime}\n\n'\
             f'<b>Total Disk Space:</b> {total}\n'\
@@ -65,17 +65,19 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Admin", "https://t.me/azik_developer")
-    buttons.buildbutton("Mirror Group", "https://t.me/azik_mirror")
+    buttons.buildbutton("Administrator 🧑‍💻", "https://t.me/azik_developer")
+    buttons.buildbutton("AziK Mirror 🎩", "https://t.me/azik_mirror")
+    buttons.buildbutton("AziK Projects 🦾", "https://t.me/azik_projects")
+    buttons.buildbutton("Kino Kanal 🎞", "https://t.me/azik_cinema")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-Salom. men bilan fayl yuklab olishingiz mumkin!
+Salom. Men bilan fayl yuklab olishingiz mumkin!
 Yordam olish uchun /{BotCommands.HelpCommand} komandasini yuboring
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup("Assalomu alaykum! Botga tashrif buyurganingizdan mamnumiz🙂!!!\nMendan foydalanib siz internetdagi xohlagan katta fayllarni ham yuklab ololasiz📥*!\nSiz avtorizatsiyadan o'tgan foydalanuvchi emassiz! Shu sababli botni lichkasida fayl yuklay olmaysiz olmaysiz!🙅‍♂️\nBotdan foydalanish uchun @azik_mirror guruhiga kiring fayllaringizni bemalol yuklay ololasiz!!🦾\nVip foydalanuvchi bolib hech qanday limitsiz yuklab olish uchun administrator bilan boglaning.⚡️\n\n@azik_projects - 𝚃𝚘 𝚝𝚑𝚎 𝚏𝚞𝚝𝚞𝚛𝚎 𝚠𝚒𝚝𝚑 𝚞𝚜🦾", context.bot, update.message, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting...", context.bot, update.message)
