@@ -158,7 +158,7 @@ class YoutubeDLHelper:
                 raise ValueError
             self.__onDownloadComplete()
         except ValueError:
-            self.__onDownloadError("Download Stopped by User!")
+            self.__onDownloadError("Yuklab olish foydalanuvchi tomonidan to'xtatildi!")
 
     def add_download(self, link, path, name, qual, playlist, args):
         if playlist:
