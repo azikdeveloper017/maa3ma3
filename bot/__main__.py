@@ -212,7 +212,7 @@ def main():
                         chat_id, msg_id = map(int, f)
                     msg = 'Restarted successfully!'
                 else:
-                    msg = 'Bot Restarted!'
+                    msg = 'Bot ishga tushdi!'
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
@@ -233,7 +233,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Qayta yuklash muvaffaqqiyatli bajarildi!", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
