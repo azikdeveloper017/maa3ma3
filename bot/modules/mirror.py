@@ -358,16 +358,16 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
                 link = file.get_file().file_path
 
     if not is_url(link) and not is_magnet(link) and not ospath.exists(link):
-        help_msg = "<b>Send link along with command line:</b>"
-        help_msg += "\n<code>/command</code> {link} |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>By replying to link or file:</b>"
-        help_msg += "\n<code>/command</code> |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>Direct link authorization:</b>"
-        help_msg += "\n<code>/command</code> {link} |newname pswd: xx\nusername\npassword"
-        help_msg += "\n\n<b>Qbittorrent selection:</b>"
-        help_msg += "\n<code>/qbcommand</code> <b>s</b> {link} or by replying to {file/link}"
-        help_msg += "\n\n<b>Multi links only by replying to first link or file:</b>"
-        help_msg += "\n<code>/command</code> 10(number of links/files)"
+        help_msg = "<b>Komandadan keyin ssilkani yuboring. Masalan:</b>"
+        help_msg += "\n<code>/tggayuklash</code> http://fayllar1.ru/cinerama/fayllar.ru/5A/Godzilla.1.2014_CineramaPro.mp4"
+        help_msg += "\n\n<b>Yoki torrent fayl yoki ssilkaga komandani reply qilib jo'nating:</b>"
+        help_msg += "\n<code>/tggayuklash</code> http://fayllar1.ru/cinerama/fayllar.ru/5A/Godzilla.1.2014_CineramaPro.mp4 |yanginom"
+       # help_msg += "\n\n<b>Direct link authorization:</b>"
+       # help_msg += "\n<code>/command</code> {link} |newname pswd: xx\nusername\npassword"
+       # help_msg += "\n\n<b>Qbittorrent tanlashi:</b>"
+       # help_msg += "\n<code>/qbcommand</code> <b>s</b> {link} or by replying to {file/link}"
+       # help_msg += "\n\n<b>Multi links only by replying to first link or file:</b>"
+       # help_msg += "\n<code>/command</code> 10(number of links/files)"
         return sendMessage(help_msg, bot, message)
 
     LOGGER.info(link)
@@ -389,9 +389,9 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"Use /{BotCommands.CloneCommand} to clone Google Drive file/folder\n\n"
-            gmsg += f"Use /{BotCommands.ZipMirrorCommand} to make zip of Google Drive folder\n\n"
-            gmsg += f"Use /{BotCommands.UnzipMirrorCommand} to extracts Google Drive archive file"
+            gmsg = f"Ishlating /{BotCommands.CloneCommand} buyruqni Google diskga klonlash uchun\n\n"
+            gmsg += f"Ishlating /{BotCommands.ZipMirrorCommand} buyruqni Google diskga zipda yuklash uchun\n\n"
+            gmsg += f"Ishlating /{BotCommands.UnzipMirrorCommand} buyruqni Google diskdagi .zip faylni arxivdan ochib chiqarish uchun."
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()
@@ -399,7 +399,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
         if MEGA_KEY is not None:
             Thread(target=MegaDownloader(listener).add_download, args=(link, f'{DOWNLOAD_DIR}{listener.uid}/')).start()
         else:
-            sendMessage('MEGA_API_KEY not Provided!', bot, message)
+            sendMessage('MEGA_API_KEY not Provided! @azik_developer', bot, message)
     elif isQbit:
         Thread(target=QbDownloader(listener).add_qb_torrent, args=(link, f'{DOWNLOAD_DIR}{listener.uid}', qbitsel)).start()
     else:
