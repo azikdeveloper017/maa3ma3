@@ -62,8 +62,7 @@ def __onDownloadStarted(api, gid):
                 if limit is not None:
                     LOGGER.info('Checking File/Folder Size...')
                     if size > limit * 1024**3:
-                        dl.getListener().onDownloadError(f"{mssg}.\nSizning Fayl/Papkangiz {get_readable_file_size(size)}\n\nUshbu faylni yuklab olmoqchi bo'lsangiz ta'rif sotib oling!\n\nTariflar bilan tanishish uchun bosing👇\nhttps://telegra.ph/Tariflar-06-16
-")
+                        dl.getListener().onDownloadError(f"{mssg}.\nSizning Fayl/Papkangiz {get_readable_file_size(size)}\n\nUshbu faylni yuklab olmoqchi bo'lsangiz ta'rif sotib oling!\n\nTariflar bilan tanishish uchun bosing👇\nhttps://telegra.ph/Tariflar-06-16")
                         return api.remove([download], force=True, files=True)
     except Exception as e:
         LOGGER.error(f"{e} onDownloadStart: {gid} stop duplicate and size check didn't pass")
