@@ -49,20 +49,21 @@ def __onDownloadStarted(api, gid):
                     acpt = check_storage_threshold(size, arch, True)
                     # True if files allocated, if allocation disabled remove True arg
                     if not acpt:
-                        msg = f'You must leave {STORAGE_THRESHOLD}GB free storage.'
-                        msg += f'\nYour File/Folder size is {get_readable_file_size(size)}'
+                        msg = f"Siz bot xotirasida {STORAGE_THRESHOLD}GB bo'sh joy qoldirishingiz kerak!"
+                        msg += f'\nSizning Fayl/Papkangiz hajmi {get_readable_file_size(size)}'
                         dl.getListener().onDownloadError(msg)
                         return api.remove([download], force=True, files=True)
                 if ZIP_UNZIP_LIMIT is not None and arch:
-                    mssg = f'Zip/Unzip limit is {ZIP_UNZIP_LIMIT}GB'
+                    mssg = f'Ziplash/Zipdan ochish limit {ZIP_UNZIP_LIMIT}GB'
                     limit = ZIP_UNZIP_LIMIT
                 elif TORRENT_DIRECT_LIMIT is not None:
-                    mssg = f'Torrent/Direct limit is {TORRENT_DIRECT_LIMIT}GB'
+                    mssg = f'Torrent/Ssilkadan yuklab olish limiti {TORRENT_DIRECT_LIMIT}GB'
                     limit = TORRENT_DIRECT_LIMIT
                 if limit is not None:
                     LOGGER.info('Checking File/Folder Size...')
                     if size > limit * 1024**3:
-                        dl.getListener().onDownloadError(f'{mssg}.\nYour File/Folder size is {get_readable_file_size(size)}')
+                        dl.getListener().onDownloadError(f"{mssg}.\nSizning Fayl/Papkangiz {get_readable_file_size(size)}\n\nUshbu faylni yuklab olmoqchi bo'lsangiz ta'rif sotib oling!\n\nTariflar bilan tanishish uchun bosing👇\nhttps://telegra.ph/Tariflar-06-16
+")
                         return api.remove([download], force=True, files=True)
     except Exception as e:
         LOGGER.error(f"{e} onDownloadStart: {gid} stop duplicate and size check didn't pass")
