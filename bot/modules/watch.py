@@ -65,15 +65,10 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
             tag = reply_to.from_user.mention_html(reply_to.from_user.first_name)
 
     if not is_url(link):
-        help_msg = "<b>Send link along with command line:</b>"
-        help_msg += "\n<code>/command</code> {link} |newname pswd: mypassword [zip] args: x:y|x1:y1"
-        help_msg += "\n\n<b>By replying to link:</b>"
-        help_msg += "\n<code>/command</code> |newname pswd: mypassword [zip] args: x:y|x1:y1"
-        help_msg += "\n\n<b>Args Example:</b> args: playliststart:^10|match_filter:season_number=18|matchtitle:S1"
-        help_msg += "\n\n<b>NOTE:</b> Add `^` before integer, some values must be integer and some string."
-        help_msg += " Like playlist_items:10 works with string so no need to add `^` before the number"
-        help_msg += " but playlistend works only with integer so you must add `^` before the number like example above."
-        help_msg += "\n\nCheck all arguments from this <a href='https://github.com/yt-dlp/yt-dlp/blob/a3125791c7a5cdf2c8c025b99788bf686edd1a8a/yt_dlp/YoutubeDL.py#L194'>FILE</a>."
+        help_msg = "<b>Komandadan keyin ssilkani yuboring! Masalan:</b>"
+        help_msg += "\n<code>/videotggayuklash</code> https://ok.ru/video/1260807326434"
+        help_msg += "\n\n<b>Yoki tashlagan ssilkangizga reply qilish ushbu komandani ishlating.</b> <code>/videotggayuklash</code> https://youtu.be/odM92ap8_c0"
+        help_msg += "\nTushunmasangiz chatga @admin deb yozing!"
         return sendMessage(help_msg, bot, message)
 
     listener = MirrorListener(bot, message, isZip, isLeech=isLeech, pswd=pswd, tag=tag)
