@@ -178,26 +178,22 @@ help = telegraph.create_page(
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
+/{BotCommands.LeechCommand}: Faylni telegramga yuklash. Komandadan keyin ssilkani yozib tashlang yoki tashlagan ssilkaga reply qilib shu komandani yuboring.
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.LeechWatchCommand}: Videofaylni telegramga yuklash. Komandadan keyin ssilkani yozib tashlang yoki tashlagan ssilkaga reply qilib shu komandani yuboring.
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.ZipLeechCommand}: Faylni telegramga zip faylda yuklash. Komandadan keyin ssilkani yozib tashlang yoki tashlagan ssilkaga reply qilib shu komandani yuboring.
 
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
+/{BotCommands.SetThumbCommand}: Maxsus eskiz rasm qo'yish uchun komandani. Videofayl ustiga pechat rasm qo'yish uchun yuborgan rasmingizga javob (reply) sifatida ushbu komandani ishlating.
 
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
+/{BotCommands.LeechSetCommand}: Yuklab olayotgan fayllaringizni turini o'zgartiruvchi komanda va pechat rasmni o'chirib beradi!
 
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
-
-/{BotCommands.RestartCommand}: Restart and update the bot
-
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+Tushunmasangiz chatga @admin deb yozing. @azik_projects 2021-2022 ©
 '''
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("Admin", f"https://t.me/azik_developer") #https://telegra.ph/{help}
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
