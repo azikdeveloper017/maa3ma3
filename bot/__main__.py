@@ -80,7 +80,7 @@ Yordam olish uchun /{BotCommands.HelpCommand} komandasini yuboring
         sendMarkup("Assalomu alaykum! Botga tashrif buyurganingizdan mamnumiz🙂!!!\nMendan foydalanib siz internetdagi xohlagan katta fayllarni ham yuklab ololasiz📥*!\nSiz avtorizatsiyadan o'tgan foydalanuvchi emassiz! Shu sababli botni lichkasida fayl yuklay olmaysiz olmaysiz!🙅‍♂️\nBotdan foydalanish uchun @azik_mirror guruhiga kiring fayllaringizni bemalol yuklay ololasiz!!🦾\nVip foydalanuvchi bolib hech qanday limitsiz yuklab olish uchun administrator bilan boglaning.⚡️\n\n@azik_projects - 𝚃𝚘 𝚝𝚑𝚎 𝚏𝚞𝚝𝚞𝚛𝚎 𝚠𝚒𝚝𝚑 𝚞𝚜🦾", context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("Qayta yuklanmoqda...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -203,6 +203,7 @@ def bot_help(update, context):
 
 def main():
     start_cleanup()
+    notifier_dict = None
     if INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
         notifier_dict = DbManger().get_incomplete_tasks()
         if notifier_dict:
@@ -210,32 +211,38 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted successfully!'
+                    msg = 'Restarted Successfully!'
                 else:
-                    msg = 'Bot ishga tushdi!'
+                    msg = 'Bot Restarted!'
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if 'Restarted successfully!' in msg and cid == chat_id:
+                             if 'Restarted Successfully!' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
-                                 bot.sendMessage(cid, msg, 'HTML')
+                                 try:
+                                     bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
+                                 except Exception as e:
+                                     LOGGER.error(e)
                              msg = ''
-                if 'Restarted successfully!' in msg and cid == chat_id:
+                if 'Restarted Successfully!' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
-                    bot.sendMessage(cid, msg, 'HTML')
+                    try:
+                        bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
+                    except Exception as e:
+                        LOGGER.error(e)
 
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
         bot.edit_message_text("Qayta yuklash muvaffaqqiyatli bajarildi!", chat_id, msg_id)
         osremove(".restartmsg")
-    elif not AUTHORIZED_CHATS:
+    elif not notifier_dict and AUTHORIZED_CHATS:
         for id_ in AUTHORIZED_CHATS:
             try:
                 bot.sendMessage(id_, "Bot ishga tushdi!", 'HTML')
